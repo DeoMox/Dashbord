@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {Tablecontext}from"../Contexts/Tablecontext"
+import {Tablecontext} from"../Contexts/Tablecontext"
 export const Usetable = () => {
   const context = useContext(Tablecontext);
   if (!context) {

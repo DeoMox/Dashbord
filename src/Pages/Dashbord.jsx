@@ -1,8 +1,9 @@
 
-import Inventorycard from "./Inventorycard";
+import Inventorycard from "../Components/Inventorycard";
 import Cardpass from "../Components/Cardpass";
 import RecentProducts from"../Components/RecentProducts"
-import UserTable from "./UserTable";
+import UserTable from "../Components/UserTable";
+import RecentActivities from "../Components/recentactivities";
 import { Usetheme } from "../Hooks/Usetheme";
 
 function Dashbord() {
@@ -14,6 +15,7 @@ function Dashbord() {
       <Cardpass/>
       <RecentProducts/>
       <UserTable/>
+      <RecentActivities/>
     </div>
   )
 }

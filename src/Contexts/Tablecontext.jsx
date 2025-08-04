@@ -22,7 +22,21 @@ export const TableProvider = ({ children }) => {
       name: "Emily Davis",
       email: "emily.d@ihuza.com",
       role: "Staff",
+      status: "active",
+      lastLogin: "3 days ago",
+    },
+     {
+      name: "David Wilson",
+      email: "emily.d@ihuza.com",
+      role: "Staff",
       status: "Inactive",
+      lastLogin: "3 days ago",
+    },
+     {
+      name: "Lisa Anderson",
+      email: "emily.d@ihuza.com",
+      role: "Staff",
+      status: "active",
       lastLogin: "3 days ago",
     },
   ]);

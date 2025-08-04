@@ -1,9 +1,9 @@
 
-
+import Cardpass from "../Components/Cardpass"
 function Categories() {
   return (
     <div>
-      <h1>mw</h1>
+    <Cardpass/>
     </div>
   )
 }

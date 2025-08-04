@@ -1,9 +1,9 @@
 
-
+import UserTable from "../Components/UserTable"
 function Users() {
   return (
     <div>
-      <h1>lee</h1>
+      <UserTable/>
     </div>
   )
 }
