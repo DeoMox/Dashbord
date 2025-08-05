@@ -1,29 +1,43 @@
-// src/Pages/Login.jsx
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useUserCheck from "../Hooks/useUserCheck";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const { user, setUser } = useUserCheck();
+  const [password, setPassword] = useState("");
+  const[error , setError]=useState("")
+  const { validUsers } = useUserCheck(); // assumed to be an array of user objects
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user && user.email && user.Username) {
-      navigate("/dashboard");
-    }
-  }, [user, navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!email || !username) {
-      alert("Please enter both email and username");
-      return;
+
+    if (!username || !password) {
+      alert("Please fill in all fields.");
+      return; 
     }
 
-    setUser({ email, Username: username });
-    navigate("/dashboard");
+    
+    console.log("validUsers:", validUsers);
+
+    const formdata = {username , password}
+
+    localStorage.setItem('user' , JSON.stringify(formdata))
+
+    console.log(formdata)
+
+    const SavedUser =JSON.parse( localStorage.getItem("user"));
+
+    if(SavedUser.username === validUsers.username && SavedUser.password === validUsers.password){
+      navigate('/Dashbord')
+    
+    }
+    else{
+      setError("incorrect password or username")
+    }
+
+    
   };
 
   return (
@@ -32,7 +46,9 @@ const Login = () => {
         onSubmit={handleLogin}
         className="bg-white p-6 rounded shadow-md w-80 space-y-4"
       >
-        <h2 className="text-xl font-semibold text-center">Login iHUZA Dashboard</h2>
+        <h2 className="text-xl font-semibold text-center">
+          Login to iHUZA Dashboard
+        </h2>
         <input
           type="text"
           placeholder="Username"
@@ -41,18 +57,20 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="email"
-          placeholder="Email"
+          type="password"
+          placeholder="Password"
           className="w-full border p-2 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          className="w-full bg-green-900 text-white p-2 rounded hover:bg-blue-600"
         >
           Login
         </button>
+
+        <span className="text-red-500">{error}</span>
       </form>
     </div>
   );

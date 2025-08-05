@@ -25,7 +25,7 @@ const App = () => {
             <CheckerProvider>
               <UserProvider>
                 <Routes>
-                  <Route path="/login" element={<Login />} />
+                  <Route path="/Login" element={<Login />} />
                   <Route path="/" element={<Navigations />}>
                     <Route
                       index
@@ -36,11 +36,11 @@ const App = () => {
                       }
                     />
                     <Route
-                      path="dashboard"
+                      path="/Dashbord"
                       element={
-                        <ProtectedRoute>
+                        
                           <Dashbord />
-                        </ProtectedRoute>
+                      
                       }
                     />
                     <Route

@@ -1,25 +1,14 @@
-// src/Contexts/UserCheckContext.jsx
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 export const UserCheckContext = createContext();
 
 export const CheckerProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
-    
-    const storedUser = localStorage.getItem("loginUser");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
-
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("loginUser", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("loginUser");
-    }
-  }, [user]);
+  const [validUsers] = useState(
+    { username: "admin", password: "admin123" }
+  );
 
   return (
-    <UserCheckContext.Provider value={{ user, setUser }}>
+    <UserCheckContext.Provider value={{ validUsers }}>
       {children}
     </UserCheckContext.Provider>
   );
